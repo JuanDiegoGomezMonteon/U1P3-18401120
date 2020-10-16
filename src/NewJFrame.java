@@ -1,5 +1,6 @@
 
 import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.JTextField;
 
@@ -15,6 +16,8 @@ import javax.swing.JTextField;
  */
 public class NewJFrame extends javax.swing.JFrame {
     private NewJDialog ventana = new NewJDialog(this,true);
+    
+    
     
     public void validaTexto(String cad)throws U1P3Exception{
         if(cad.length() == 0) throw new U1P3Exception("Ingresa tus datos");
@@ -43,7 +46,7 @@ public class NewJFrame extends javax.swing.JFrame {
         
         jTextField1.requestFocus();
     }
-
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -73,6 +76,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -166,6 +174,14 @@ public class NewJFrame extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        int respuesta = JOptionPane.showConfirmDialog(this, "¿Seguro que deseas cerrar laventana?");
+        if(respuesta== JOptionPane.OK_OPTION){
+            System.exit(0);
+        }
+    }//GEN-LAST:event_formWindowClosing
+    
     
     
     
